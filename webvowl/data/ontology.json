@@ -12,13 +12,13 @@
     "id" : "2",
     "type" : "owl:Class"
   }, {
+    "id" : "3",
+    "type" : "owl:Class"
+  }, {
     "id" : "1",
     "type" : "owl:Class"
   }, {
-    "id" : "7",
-    "type" : "owl:Class"
-  }, {
-    "id" : "3",
+    "id" : "8",
     "type" : "owl:Class"
   } ],
   "classAttribute" : [ {
@@ -40,25 +40,6 @@
     "id" : "2",
     "superClasses" : [ "3" ]
   }, {
-    "iri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals",
-    "baseIri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "Immortals"
-    },
-    "subClasses" : [ "0" ],
-    "id" : "1",
-    "superClasses" : [ "7" ]
-  }, {
-    "iri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing",
-    "baseIri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56",
-    "instances" : 0,
-    "label" : {
-      "IRI-based" : "LivingThing"
-    },
-    "subClasses" : [ "1", "3" ],
-    "id" : "7"
-  }, {
     "iri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal",
     "baseIri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56",
     "instances" : 0,
@@ -67,7 +48,26 @@
     },
     "subClasses" : [ "2" ],
     "id" : "3",
-    "superClasses" : [ "7" ]
+    "superClasses" : [ "8" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals",
+    "baseIri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Immortals"
+    },
+    "subClasses" : [ "0" ],
+    "id" : "1",
+    "superClasses" : [ "8" ]
+  }, {
+    "iri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing",
+    "baseIri" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "LivingThing"
+    },
+    "subClasses" : [ "1", "3" ],
+    "id" : "8"
   } ],
   "property" : [ {
     "id" : "4",
@@ -79,7 +79,7 @@
     "id" : "6",
     "type" : "rdfs:SubClassOf"
   }, {
-    "id" : "8",
+    "id" : "7",
     "type" : "rdfs:SubClassOf"
   }, {
     "id" : "9",
@@ -91,23 +91,23 @@
     "attributes" : [ "anonymous", "object" ],
     "id" : "4"
   }, {
-    "range" : "1",
-    "domain" : "0",
+    "range" : "3",
+    "domain" : "2",
     "attributes" : [ "anonymous", "object" ],
     "id" : "5"
   }, {
-    "range" : "7",
-    "domain" : "1",
+    "range" : "1",
+    "domain" : "0",
     "attributes" : [ "anonymous", "object" ],
     "id" : "6"
   }, {
-    "range" : "7",
-    "domain" : "3",
+    "range" : "8",
+    "domain" : "1",
     "attributes" : [ "anonymous", "object" ],
-    "id" : "8"
+    "id" : "7"
   }, {
-    "range" : "3",
-    "domain" : "2",
+    "range" : "8",
+    "domain" : "3",
     "attributes" : [ "anonymous", "object" ],
     "id" : "9"
   } ]
