@@ -6,4 +6,7 @@ CONF_FILE=config.properties
 
 build:
 	java -jar $(WIDOCO_PATH) -ontFile $(ONTOLOGY_PATH) -outFolder $(OUT_FOLDER) -confFile $(CONF_FILE) -includeImportedOntologies -webVowl -ignoreIndividuals -includeAnnotationProperties -uniteSections -rewriteAll
+	echo "renaming output"
+	mv ./dist/index-en.html ./dist/index.html
+	echo "output renamed"
 
