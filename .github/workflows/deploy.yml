@@ -38,6 +38,7 @@ jobs:
           path: ./dist
 
       - run: ls -la
+      - run: ls dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
