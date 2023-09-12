@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="resources/primer.css" media="screen" />    <link rel="stylesheet" href="resources/rec.css" media="screen" />    <link rel="stylesheet" href="resources/extra.css" media="screen" />    <link rel="stylesheet" href="resources/owl.css" media="screen" />    <title>The KIMEDS Ontology</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/example","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/example","name":"The KIMEDS Ontology", "headline":""An example ontology <b>Test bold</b>"", "dateReleased":"Creation date", "dateModified":"Modified date", "version":"v1.0.0", "license":"http://creativecommons.org/licenses/by/2.0/", "author":[{"@type":"Person","name":"First Author","url":"http://example.org/author1"},{"@type":"Person","name":"Second Author","url":"http://example.org/author2"}], "contributor":[{"@type":"Person","name":"First contributor","url":"http://example.org/contributor1"},{"@type":"Person","name":"Second contributor","url":"http://example.org/contributor2"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>The KIMEDS Ontology</h1>
+<h2>Release: Creation date</h2>
+
+
+<dl>
+<dt>Modified on: Modified date</dt>
+<dt>This version:</dt>
+<dd><a href="https://w3id.org/example/1.0.1">https://w3id.org/example/1.0.1</a></dd>
+<dt>Previous version:</dt>
+<dd><a href="https://w3id.org/example/1.0.0">https://w3id.org/example/1.0.0</a></dd>
+<dt>Revision:</dt>
+<dd>v1.0.0</dd>
+<dt>Authors:</dt>
+<dd><a href="http://example.org/author1">First Author</a>, (<a href="https://www.isi.edu/">First author institution</a>)</dd><dd><a href="http://example.org/author2">Second Author</a>, (<a href="https://www.isi.edu/">Second author institution</a>)</dd>
+
+<dt>Contributors:</dt>
+<dd><a href="http://example.org/contributor1">First contributor</a>, (<a href="https://isi.edu/">First contributor institution</a>)</dd><dd><a href="http://example.org/contributor2">Second contributor</a>, (<a href="https://isi.edu/">Second contributor institution</a>)</dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="kio.xml" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="kio.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="http://creativecommons.org/licenses/by/2.0/" target="_blank"><img src="https://img.shields.io/badge/License-CC_BY-blue.svg" alt="http://creativecommons.org/licenses/by/2.0/" /></a>
+<a href="http://creativecommons.org/licenses/by/2.0/" rel="license" target="_blank">
+<img src="https://i.creativecommons.org/l/by/2.0/88x31.png" style="border-width:0" alt="License" />
+</a>
+<br/></dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --></dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
+"An example ontology <b>Test bold</b>"</span>
+</div>
+<div id="toc"></div> 
+
+<!--INTRODUCTION SECTION-->
+    <div id="introduction"><h2 id="intro" class="list">Introduction <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This is a place holder text for the introduction. The introduction should briefly describe the ontology, its motivation, state of the art and goals.</span>
+</div>
+  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">The KIMEDS Ontology: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human"
+         title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human">
+         <span>human</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals"
+         title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals">
+         <span>immortals</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal"
+         title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal">
+         <span>mortal</span>
+      </a>
+   </li>
+   <li>
+      <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown"
+         title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown">
+         <span>unknown</span>
+      </a>
+   </li>
+</ul><iframe align="center" width="100%" height ="500px" src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">The KIMEDS Ontology: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">"The KIMEDS ontology."</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for The KIMEDS Ontology classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by The KIMEDS Ontology.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     id="classes">
+   <h3 id="classes-headline" class="list">Classes</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human"
+            title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human">
+            <span>human</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals"
+            title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals">
+            <span>immortals</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal"
+            title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal">
+            <span>mortal</span>
+         </a>
+      </li>
+      <li>
+         <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown"
+            title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown">
+            <span>unknown</span>
+         </a>
+      </li>
+   </ul>
+   <div class="entity" id="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human">
+      <h3>human<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal"
+               title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal">mortal</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals">
+      <h3>immortals<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing"
+               target="_blank"
+               title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing">living thing</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown"
+               title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown">unknown</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal"
+               title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal">mortal</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal">
+      <h3>mortal<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing"
+               target="_blank"
+               title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing">living thing</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human"
+               title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human">human</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals"
+               title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals">immortals</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown">
+      <h3>unknown<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals"
+               title="http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals">immortals</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+</div>
+</div>
+</div>
+    
+
+<!--REFERENCES SECTION-->
+  <div id="references">
+<h2 id="ref" class="list">References <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+Add your references here. It is recommended to have them as a list.</span>
+
+</div>
+   
+
+<!--CHANGELOG SECTION-->
+   <div id="changelog"><div id="changelog">
+<h2 id="changes" class="list">Changes from last version</h2>
+<h3 id="changeClass" class="list">Classes</h3>
+<details><summary><u>Added classes</u></summary>
+<ul><li><a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human">http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human</a>
+<ul>
+<li>Added: SubClass of http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal</li>
+</ul>
+</li>
+<li><a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals">http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals</a>
+<ul>
+<li>Added: SubClass of http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing</li>
+<li>Added: DisjointClasses DisjointClasses(&lt;http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals&gt; &lt;http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal&gt;)</li>
+</ul>
+</li>
+<li><a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing">http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing</a>
+</li>
+<li><a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal">http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal</a>
+<ul>
+<li>Added: SubClass of http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing</li>
+<li>Added: DisjointClasses DisjointClasses(&lt;http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals&gt; &lt;http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal&gt;)</li>
+</ul>
+</li>
+<li><a href="#http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown">http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown</a>
+<ul>
+<li>Added: SubClass of http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals</li>
+</ul>
+</li>
+</ul></details><details><summary><u>Deleted classes</u></summary>
+<ul><li><a href="#Organization">https://w3id.org/example#Organization</a>
+</li>
+<li><a href="#Researcher">https://w3id.org/example#Researcher</a>
+</li>
+</ul></details><h3 id="changeProp" class="list">Object Properties</h3>
+<details><summary><u>Deleted object properties</u></summary>
+<ul><li><a href="#hasMember">https://w3id.org/example#hasMember</a>
+</li>
+<li><a href="#partOf">https://w3id.org/example#partOf</a>
+</li>
+</ul></details><h3 id="changeDataProp" class="list">Data Properties</h3>
+<details><summary><u>Deleted data properties</u></summary>
+<ul><li><a href="#foundedIn">https://w3id.org/example#foundedIn</a>
+</li>
+</ul></details></div>
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>
