@@ -1,0 +1,34 @@
+[ {
+  "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ]
+}, {
+  "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Human",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Mortal",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#LivingThing"
+  } ]
+}, {
+  "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Unknown",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://www.semanticweb.org/piotr/ontologies/2023/8/untitled-ontology-56#Immortals"
+  } ]
+} ]

@@ -1,0 +1,18 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix : <> .
+<https://w3id.org/example/1.0.1> a prov:Entity;
+	 dc:title "The KIMEDS Ontology";
+	 prov:wasAttributedTo <http://example.org/author1>;
+	 dc:creator <http://example.org/author1>;
+	 prov:wasAttributedTo <http://example.org/author2>;
+	 dc:creator <http://example.org/author2>;
+	 prov:wasAttributedTo <http://example.org/contributor1>;
+	 dc:contributor <http://example.org/contributor1>;
+	 prov:wasAttributedTo <http://example.org/contributor2>;
+	 dc:contributor <http://example.org/contributor2>;
+	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+	 prov:wasRevisionOf <https://w3id.org/example/1.0.0>;
+	 prov:wasGeneratedAt "Creation date";
+.
